@@ -110,11 +110,14 @@
         ///</summary>
         Pii = 1 << 18,
 
+<<<<<<< HEAD
         /// <summary>
         /// DeltaV - The ability to whitelist people. Either this permission or +BAN is required for remove.
         /// </summary>
         Whitelist = 1 << 20,
 
+=======
+>>>>>>> 94a113dbd6 (Adds a Pii Flag, Censors Hwid and Ip  (#27776))
         /// <summary>
         ///     Dangerous host permissions like scsi.
         /// </summary>
