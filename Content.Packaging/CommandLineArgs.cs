@@ -44,7 +44,7 @@ public sealed class CommandLineArgs
         var skipBuild = false;
         var wipeRelease = true;
         var hybridAcz = false;
-        var configuration = "Release";
+        var configuration = "Debug";
         List<string>? platforms = null;
 
         using var enumerator = args.GetEnumerator();
