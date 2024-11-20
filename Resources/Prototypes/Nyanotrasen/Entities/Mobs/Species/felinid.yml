@@ -9,6 +9,7 @@
     scale: 0.8, 0.8
   - type: HumanoidAppearance
     species: Felinid
+    initial: Felinid
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -64,13 +65,32 @@
       Unsexed: MaleFelinid
   - type: Felinid
   - type: NoShoesSilentFootsteps
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - Nekomimetic
+    understands:
+    - TauCetiBasic
+    - Nekomimetic
+  - type: Thieving
+    ignoreStripHidden: true
+    stealth: Subtle
+    stripTimeReduction: 0
+    stripTimeMultiplier: 0.667
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+        - Shard
+        - Landmine
+        - Mousetrap
+        - SlipEntity
 
 - type: entity
   save: false
   name: Urist McHands
   parent: MobHumanDummy
   id: MobFelinidDummy
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A dummy felinid meant to be used in character setup.
   components:
   - type: HumanoidAppearance

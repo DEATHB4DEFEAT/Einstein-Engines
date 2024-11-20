@@ -12,6 +12,7 @@
       - id: Cautery
       - id: Retractor
       - id: Scalpel
+      - id: BoneGel
 
 - type: entity
   id: ClothingBackpackDuffelCBURNFilled
@@ -46,6 +47,7 @@
       - id: ScalpelAdvanced
       - id: ClothingHandsGlovesNitrile
       - id: EmergencyRollerBedSpawnFolded
+      - id: BoneGel
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -236,17 +238,18 @@
   id: ClothingBackpackChameleonFill
   suffix: Fill, Chameleon
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingUniformJumpsuitChameleon
-      - id: ClothingOuterChameleon
-      - id: ClothingNeckChameleon
-      - id: ClothingMaskGasChameleon
-      - id: ClothingHeadHatChameleon
-      - id: ClothingHandsChameleon
-      - id: ClothingEyesChameleon
-      - id: ClothingHeadsetChameleon
-      - id: ClothingShoesChameleon
+    - type: StorageFill
+      contents:
+        - id: ClothingUniformJumpsuitChameleon
+        - id: ClothingOuterChameleon
+        - id: ClothingNeckChameleon
+        - id: ClothingMaskGasChameleon
+        - id: ClothingHeadHatChameleon
+        - id: ClothingHandsChameleon
+        - id: ClothingEyesChameleon
+        - id: ClothingHeadsetChameleon
+        - id: ClothingShoesChameleon
+        - id: BarberScissors
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

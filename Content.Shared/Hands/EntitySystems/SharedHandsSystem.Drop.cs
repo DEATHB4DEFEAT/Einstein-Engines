@@ -128,14 +128,16 @@ public abstract partial class SharedHandsSystem
             // TODO recursively check upwards for containers
 
             if (!isInContainer
-                || !ContainerSystem.TryGetContainingContainer(userXform.ParentUid, uid, out var container, skipExistCheck: true)
+                || !ContainerSystem.TryGetContainingContainer(userXform.ParentUid, uid, out var container)
                 || !ContainerSystem.Insert((entity, itemXform), container))
                 TransformSystem.AttachToGridOrMap(entity, itemXform);
             return true;
         }
 
-        var target = targetDropLocation.Value.ToMap(EntityManager, TransformSystem);
-        TransformSystem.SetWorldPosition(itemXform, GetFinalDropCoordinates(uid, userXform.MapPosition, target));
+        var (itemPos, itemRot) = TransformSystem.GetWorldPositionRotation(entity);
+        var origin = new MapCoordinates(itemPos, itemXform.MapID);
+        var target = TransformSystem.ToMapCoordinates(targetDropLocation.Value);
+        TransformSystem.SetWorldPositionRotation(entity, GetFinalDropCoordinates(uid, origin, target), itemRot);
         return true;
     }
 

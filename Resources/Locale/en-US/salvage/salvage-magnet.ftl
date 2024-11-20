@@ -17,6 +17,8 @@ salvage-magnet-resources = {$resource ->
     [OrePlasma] Plasma
     [OreUranium] Uranium
     [OreArtifactFragment] Artifact fragments
+    [OreBluespace] Bluespace crystals
+    [OreNormality] Normality crystals
     *[other] {$resource}
 }
 
@@ -64,6 +66,7 @@ salvage-map-proto-MediumShuttleWreck = Ruined Emergency Shuttle
 salvage-map-proto-MediumPetHospital = Pet and Bear Hospital
 salvage-map-proto-MediumCrashedShuttle = Crashed Shuttle
 salvage-map-proto-Meatball = Meatball
+salvage-map-proto-VeganMeatball = Vegan Meatball
 
 salvage-map-proto-StationStation = Station station
 salvage-map-proto-AsteroidBase = Asteroid Base
