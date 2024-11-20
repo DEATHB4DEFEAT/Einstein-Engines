@@ -32,33 +32,15 @@ jobs:
         with:
           dotnet-version: 8.0.100
 
-      - name: Cache NuGet
-        id: cache-nuget
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-nuget
-        with:
-          path: ~/.nuget/packages
-          # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget
-        continue-on-error: true
-
       - name: Install dependencies
         run: dotnet restore
 
       - name: Cache Build
         id: cache-release
         uses: actions/cache@v3
-        env:
-          cache-name: cache-build-release
         with:
           path: bin
-          # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-build-release-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-build-release
+          key: ${{ runner.os }}-build-Release
         continue-on-error: true
 
       - name: Build
