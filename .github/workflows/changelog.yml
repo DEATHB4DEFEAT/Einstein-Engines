@@ -28,16 +28,40 @@ jobs:
         git config --global user.email "${{ vars.CHANGELOG_EMAIL }}"
       shell: bash
 
-    - name: Setup Node
+    - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
+
+    - name: Cache Dependencies
+      id: cache-npm
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-changelog-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+      continue-on-error: true
+
+    - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+      name: List the State of Dependencies
+      run: |
+        cd "Tools/changelogs"
+        npm list
+      shell: bash
+      continue-on-error: true
 
     - name: Install Dependencies
       run: |
         cd "Tools/changelogs"
         npm install
       shell: bash
+      continue-on-error: true
 
     - name: Generate Changelog
       run: |
