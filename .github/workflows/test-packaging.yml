@@ -56,6 +56,19 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      - name: Cache Build
+        id: cache-release
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-build-release
+        with:
+          path: bin
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-build-release-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-build-release
+        continue-on-error: true
+
       - name: Build Packaging
         run: dotnet build Content.Packaging --configuration Release --no-restore /m
 

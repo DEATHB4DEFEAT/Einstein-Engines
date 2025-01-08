@@ -41,6 +41,19 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
 
+    - name: Cache Build
+      id: cache-debugopt
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-build-debugopt
+      with:
+        path: bin
+        # Look to see if there is a cache hit for the corresponding requirements file
+        key: ${{ runner.os }}-build-debugopt-${{ hashFiles('**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-build-debugopt
+      continue-on-error: true
+
     - name: Build Project
       run: dotnet build --configuration DebugOpt --no-restore /p:WarningsAsErrors=nullable /m
 
